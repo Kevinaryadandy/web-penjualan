@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFT-UMJ - Solusi Teknologi Terpercaya</title>
+    
+    <style>
+        /* Variabel Warna untuk mempermudah transisi tema */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #f4f4f4;
+            --accent-color: #007bff;
+            --nav-bg: #222222;
+        }
+
+        /* Class untuk Dark Mode */
+        body.dark-theme {
+            --bg-color: #1a1a1a;
+            --text-color: #f4f4f4;
+            --card-bg: #2d2d2d;
+            --nav-bg: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: 0.3s;
+            line-height: 1.6;
+        }
+
+        /* Bagian Navigation Bar */
+        header {
+            background-color: var(--nav-bg);
+            color: white;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--accent-color); }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li a { color: white; text-decoration: none; padding: 0 15px; }
+
+        .bonus-features { display: flex; gap: 10px; margin-top: 10px; }
+
+        #searchBar {
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: none;
+        }
+
+        #darkModeToggle {
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1200x400');
+            background-size: cover;
+            color: white;
+        }
+
+        /* Product Grid  */
+        #products { padding: 50px 5%; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover { transform: translateY(-10px); }
+        .product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; }
+        .product-card h3 { margin: 15px 0 10px; }
+
+        /* Form Pemesanan */
+        #order { padding: 50px 5%; background: var(--card-bg); }
+        form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form input, form select, form button {
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        form button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--nav-bg);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* Responsivitas untuk Mobile */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; }
+            nav ul { margin: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">SmartFT-UMJ</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#order">Pesan</a></li>
+            </ul>
+            <div class="bonus-features">
+                <input type="text" id="searchBar" placeholder="Cari produk...">
+                <button id="darkModeToggle">🌙 Mode Gelap</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Upgrade Teknologi Anda</h1>
+            <p>Menyediakan alat kuliah kualitas premium untuk kebutuhan Mahasiswa FT-UMJ yang profesional.</p>
+        </section>
+
+        <section id="products">
+            <h2 style="text-align: center;">Katalog Produk</h2>
+            <div id="product-container" class="product-grid"></div>
+        </section>
+
+        <section id="about" style="padding: 50px 5%; text-align: center;">
+            <h2>Tentang Kami</h2>
+            <p>SmartFT-UMJ adalah pionir e-commerce teknologi yang mengedepankan keaslian barang dan pelayanan pelanggan prima, Guna mendukung alat pembelajaran bagi mahasiswa FT-UMJ, Dapatkan diskon 30% bagi mahasiswa FT-UMJ dengan syarat kelulusan Tahsin minimal level 4</p>
+        </section>
+
+        <section id="order">
+            <h2 style="text-align: center; margin-bottom: 20px;">Form Pemesanan</h2>
+            <form id="orderForm">
+                <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                <input type="text" id="NIM" placeholder="NIM Dan Jurusan" required>
+                <select id="pilihProduk" required>
+                    <option value="">-- Pilih Produk --</option>
+                </select>
+                <input type="number" id="jumlah" placeholder="Jumlah Barang" min="1" required>
+                <button type="submit">Konfirmasi Pembelian</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SmartFT-UMJ Store. @FT-UMJ</p>
+    </footer>
+
+    <script>
+        // Data Produk (Array of Objects) sesuai instruksi
+       const products = [
+            { id: 1, name: "MacBook Pro M2", price: 21000000, img: "https://tse3.mm.bing.net/th/id/OIP.CeF1aX0L5NTTOJeceR67_gHaE0?pid=Api&P=0&h=180" },
+            { id: 2, name: "Logitech MX Master", price: 1200000, img: "https://m.media-amazon.com/images/I/61D7dUYR3DL._AC_SL1500_.jpg" },
+            { id: 3, name: "Lenovo ThinkPad P16V Gen 2", price: 9000000, img: "https://microless.com/cdn/products/9d1ea18a3dc114b7db969037a81351b7-hi.jpg" },
+            { id: 4, name: "Curved Monitor 34\"", price: 7500000, img: "https://m.media-amazon.com/images/I/71hvdURMrWL._AC_.jpg" },
+            { id: 5, name: "MSI Thin GF6512 VF", price: 1900000, img: "https://storage-asset.msi.com/global/picture/image/feature/nb/GF/Thin-GF63-12HW/images/GF63-NB.png" },
+            { id: 6, name: "AXIOO X JKT48", price: 4000000, img: "https://carisinyal.com/wp-content/uploads/2024/08/Untitledgtgtre_.webp" },
+            { id: 7, name: "Mechanical Keyboard", price: 1500000, img: "https://cdn.shopify.com/s/files/1/0059/0630/1017/t/5/assets/keychronv7custommechanicalkeyboard-1670491631271.jpg?v=1670491636" },
+            { id: 8, name: "ASUS ROG 9th Gen", price: 1500000, img: "https://pcper.com/wp-content/uploads/2019/04/8600-rog-gx502.jpg" },
+            
+        ];
+
+        const container = document.getElementById('product-container');
+        const selectDropdown = document.getElementById('pilihProduk');
+
+        // Fungsi untuk Menampilkan Produk (DOM Manipulation)
+        function renderProducts(dataArray) {
+            container.innerHTML = ""; 
+            dataArray.forEach(item => {
+                // Membuat elemen card
+                const card = document.createElement('article');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>Rp ${item.price.toLocaleString('id-ID')}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Mengisi Dropdown Form secara dinamis
+        products.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.name;
+            option.textContent = item.name;
+            selectDropdown.appendChild(option);
+        });
+
+        //Inisialisasi awal tampil produk
+        renderProducts(products);
+
+        // Fitur Bonus: Search Bar
+        document.getElementById('searchBar').addEventListener('keyup', (e) => {
+            const keyword = e.target.value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(keyword));
+            renderProducts(filtered);
+        });
+
+        // Fitur Dark Mode 
+        const btnDark = document.getElementById('darkModeToggle');
+        btnDark.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            btnDark.textContent = document.body.classList.contains('dark-theme') ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+        });
+
+        // Penanganan Form Pemesanan
+        document.getElementById('orderForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            const produk = document.getElementById('pilihProduk').value;
+            alert(`Halo ${nama}!\nTerima kasih telah memesan ${produk}.\nUntuk Pembayaran Dan Pengambilan, Silahkan Konfirmasi Ke Akademik.`);
+        });
+    </script>
+</body>
+</html>
